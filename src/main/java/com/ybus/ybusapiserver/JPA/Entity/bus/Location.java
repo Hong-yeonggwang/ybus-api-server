@@ -25,6 +25,7 @@ public class Location {
     private LocalDateTime locationTime;
 
     @ManyToOne
+    @JoinColumn(name = "DEVICESEQ")
     private Device deviceSeq;
 
     @ManyToOne

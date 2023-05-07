@@ -1,8 +1,6 @@
 package com.ybus.ybusapiserver.JPA.Entity.bus;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -16,6 +14,9 @@ import java.util.List;
 @Entity
 @Table(name = "DEVICE")
 @ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class Device {
     @Id
@@ -33,7 +34,7 @@ public class Device {
     @Column(name = "UPDATETIME")
     private LocalDateTime updateTime;
 
-    @OneToMany(mappedBy = "deviceSeq")
-    private List<Location> device = new ArrayList<Location>();
+    @OneToMany(mappedBy = "deviceSeq", fetch = FetchType.EAGER)
+    private List<Location> locations = new ArrayList<Location>();
 
 }
