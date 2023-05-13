@@ -3,6 +3,8 @@ package com.ybus.ybusapiserver.JPA.Entity.bus;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Entity
@@ -32,7 +34,11 @@ public class BusStop {
     @Column(name = "BUSSTOPORDER")
     private int busStopOrder;
 
-    @OneToOne
-    @JoinColumn(name = "BUSSLINESEQ")
+    @ManyToOne
+    @JoinColumn(name = "BUSLINESEQ")
     private BusLine busLineSeq;
+
+    @OneToMany(mappedBy = "busStopSeq")
+    private List<Location> locations = new ArrayList<Location>();
+
 }

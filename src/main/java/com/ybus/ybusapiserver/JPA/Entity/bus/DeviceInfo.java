@@ -1,7 +1,6 @@
 package com.ybus.ybusapiserver.JPA.Entity.bus;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,6 +8,9 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "DEVICEINFO")
 public class DeviceInfo {
     @Id
@@ -20,7 +22,7 @@ public class DeviceInfo {
     private LocalDateTime deviceRegdate;
 
     @Column(name = "DEVICESTATE")
-    private String diveState;
+    private String deviceState;
 
     @OneToOne
     @JoinColumn(name = "DEVICESEQ")

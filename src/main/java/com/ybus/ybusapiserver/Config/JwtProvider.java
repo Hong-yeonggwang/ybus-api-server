@@ -26,7 +26,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class JwtProvider {
     private final Logger LOGGER = LoggerFactory.getLogger(JwtProvider.class);
-    private final UserDetailsService userDetailsService;
+    private final JwtUserDetailService userDetailsService;
 
     @Value("spring.jwt.secret")
     private String secretKey = "secretKey";

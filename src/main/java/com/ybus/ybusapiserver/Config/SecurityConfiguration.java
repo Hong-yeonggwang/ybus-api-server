@@ -25,7 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/sign-api/sign-in","/sign-api/sign-up","/sign-api/exception").permitAll()
-                .antMatchers(HttpMethod.GET, "/product/**").permitAll()
+                .antMatchers("/bus/request","bus/token","/gper/**").permitAll()
                 .antMatchers("**excetion**").permitAll()
                 .anyRequest().hasRole("ADMIN")
                 .and()
@@ -38,8 +38,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
     @Override
     public void configure(WebSecurity webSecurity){
-        webSecurity.ignoring().antMatchers("/api/v1/get-api/**",  "/configuration/ui",
-                "/swagger-resources", "/configuration/security",
-                "/swagger-ui.html", "/webjars/**","/swagger/**", "sign-api/sign-in");
+        webSecurity.ignoring().antMatchers("/bus/request","bus/token");
     }
 }

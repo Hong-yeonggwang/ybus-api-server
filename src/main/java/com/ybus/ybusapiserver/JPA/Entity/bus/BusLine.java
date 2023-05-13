@@ -3,6 +3,8 @@ package com.ybus.ybusapiserver.JPA.Entity.bus;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,7 +17,7 @@ import javax.persistence.*;
 public class BusLine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="BUSTLINESEQ")
+    @Column(name="BUSLINESEQ")
     private Long busLineSeq;
 
     @Column(name = "BUSLINE")
@@ -27,4 +29,8 @@ public class BusLine {
     @ManyToOne
     @JoinColumn(name = "BUSTYPESEQ")
     private BusType busTypeSeq;
+
+    @OneToMany(mappedBy = "busLineSeq")
+    private List<BusStop> busLines = new ArrayList<BusStop>();
+
 }

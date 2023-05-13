@@ -12,4 +12,7 @@ public interface DeviceRepository extends JpaRepository<Device, Long> {
     @Override
     @EntityGraph(attributePaths = {"locations"})
     List<Device> findAll();
+
+    Device getByDeviceSeq(Long deviceSeq);
+
 }
