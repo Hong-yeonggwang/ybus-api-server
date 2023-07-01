@@ -1,14 +1,17 @@
 package com.ybus.ybusapiserver.JPA.Entity.bus;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Setter
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name =  "BUSSCHEDULE")
 public class BusSchedule {
     @Id
@@ -17,7 +20,7 @@ public class BusSchedule {
     private Long busScheduleSeq;
 
     @Column(name = "BUSTIME")
-    private LocalDateTime busTime;
+    private LocalTime busTime;
 
     @Column(name = "COURSENAME")
     private String courseName;

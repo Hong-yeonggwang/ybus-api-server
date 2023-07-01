@@ -13,6 +13,7 @@ public class BusStopDTO {
     private String latitude;
     private String longitude;
     private String busStopLine;
+    private int isStopped;
     private int busStopOrder;
     private Long busLineSeq;
 }

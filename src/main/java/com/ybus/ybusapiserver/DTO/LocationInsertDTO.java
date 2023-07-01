@@ -3,6 +3,7 @@ package com.ybus.ybusapiserver.DTO;
 import lombok.*;
 
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,4 +15,7 @@ public class LocationInsertDTO {
     private double latitude;
     private double longitude;
     private String member_key;
+    private Long busStopSeq;
+    private Long deviceSeq;
+    private int isWithinRange;
 }

@@ -1,19 +1,24 @@
 package com.ybus.ybusapiserver.Service;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.ybus.ybusapiserver.DTO.BusLineDTO;
 import com.ybus.ybusapiserver.DTO.BusStopDTO;
 import com.ybus.ybusapiserver.DTO.BusTypeDTO;
 import com.ybus.ybusapiserver.JPA.Entity.bus.BusLine;
+import com.ybus.ybusapiserver.JPA.Entity.bus.BusSchedule;
 import com.ybus.ybusapiserver.JPA.Entity.bus.BusStop;
 import com.ybus.ybusapiserver.JPA.Entity.bus.BusType;
 import com.ybus.ybusapiserver.JPA.repository.bus.BusLineRepository;
+import com.ybus.ybusapiserver.JPA.repository.bus.BusScheduleRepository;
 import com.ybus.ybusapiserver.JPA.repository.bus.BusStopRepository;
 import com.ybus.ybusapiserver.JPA.repository.bus.BusTypeRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @SpringBootTest
@@ -26,6 +31,8 @@ public class BusInfoServiceTest {
     private BusLineRepository busLineRepository;
     @Autowired
     private BusStopRepository busStopRepository;
+    @Autowired
+    private BusScheduleRepository busScheduleRepository;
 
     @Test
     public void insertBusTypeTest(){
@@ -68,8 +75,36 @@ public class BusInfoServiceTest {
         busStopList.forEach(name -> System.out.println(name.toString()));
     }
     @Test
+    @Transactional
     public void nProblem(){
         BusStop busLine = busStopRepository.getByBusStopSeq(1L);
-        System.out.println(busLine.toString());
+        System.out.println("asd");
+        System.out.println(busLine.getLocations().get(0));
     }
+    @Test
+    @Transactional
+    public void queryDslBusLineTest(){
+        List<BusLine> busLine = busLineRepository.findAllToDsl();
+        busLine.forEach(name -> System.out.println(name.getBusTypeSeq()));
+    }
+    @Test
+    @Transactional
+    public void getBusScheduleTest(){
+        List<BusSchedule> busScheduleList = busScheduleRepository.getBusScheduleToLine(1L);
+
+//        busScheduleList.forEach(name -> System.out.println(name.getBusLineSeq().getBusTypeSeq().toString()));
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+
+        try {
+            // 리스트를 JSON으로 변환
+            String busScheduleJson = objectMapper.writeValueAsString(busScheduleList);
+            System.out.println(busScheduleJson);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.ybus.ybusapiserver.JPA.Entity.bus;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "BUSSTOP")
 @ToString
@@ -30,11 +32,13 @@ public class BusStop {
 
     @Column(name = "BUSSTOPLINE")
     private String busStopLine; // 상행,하행
+    @Column(name = "ISSTOPPED")
+    private int isStopped;
 
     @Column(name = "BUSSTOPORDER")
     private int busStopOrder;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BUSLINESEQ")
     private BusLine busLineSeq;
 

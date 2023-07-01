@@ -13,7 +13,6 @@ public class DeviceInfoDTO {
     private Long deviceInfoSeq;
     private LocalDateTime deviceRegdate;
     private String deviceState;
-    private Long deviceSeq;
     private String busNumber;
     private String busAlias;
     private Long busType;

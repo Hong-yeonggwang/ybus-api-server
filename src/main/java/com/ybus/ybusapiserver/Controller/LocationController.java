@@ -6,9 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ybus.ybusapiserver.DTO.LocationInsertDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController(value = "/gper")
+@RestController
+@RequestMapping("/gper")
 public class LocationController {
 
     @PostMapping(value = "/location")

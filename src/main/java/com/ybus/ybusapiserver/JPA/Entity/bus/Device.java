@@ -34,7 +34,11 @@ public class Device {
     @Column(name = "UPDATETIME")
     private LocalDateTime updateTime;
 
-    @OneToMany(mappedBy = "deviceSeq", fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "DEVICEINFOSEQ")
+    private DeviceInfo deviceInfoSeq;
+
+    @OneToMany(mappedBy = "deviceSeq") //, fetch = FetchType.EAGER
     private List<Location> locations = new ArrayList<Location>();
 
 }

@@ -41,19 +41,18 @@ public class DeviceServiceTest {
     }
     @Test
     public void insertDeviceInfoTest(){
-        DeviceInfoDTO deviceInfoDTO = DeviceInfoDTO.builder()
-                .deviceRegdate(LocalDateTime.now())
-                .deviceState("show")
-                .deviceSeq(1L)
-                .busNumber("123테스트 1234")
-                .busAlias("테스트 노랭이 3호")
-                .busType(1L)
-                .busLine(1L)
-                .build();
-
-        deviceService.insertDeviceInfoData(deviceInfoDTO);
+//        DeviceInfoDTO deviceInfoDTO = DeviceInfoDTO.builder()
+//                .deviceRegdate(LocalDateTime.now())
+//                .deviceState("show")
+//                .busNumber("123테스트 4567")
+//                .busAlias("테스트 노랭이 2호")
+//                .busType(1L)
+//                .busLine(1L)
+//                .build();
+//
+//        deviceService.insertDeviceInfoData(deviceInfoDTO);
 
         List<DeviceInfo> devices = deviceInfoRepository.findAll();
-        devices.forEach(name -> System.out.println(name.getBusLine()));
+        devices.forEach(name -> System.out.println(name.getBusType()));
     }
 }

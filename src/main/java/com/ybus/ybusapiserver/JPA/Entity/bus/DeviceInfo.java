@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "DEVICEINFO")
@@ -24,10 +25,6 @@ public class DeviceInfo {
     @Column(name = "DEVICESTATE")
     private String deviceState;
 
-    @OneToOne
-    @JoinColumn(name = "DEVICESEQ")
-    private Device deviceSeq;
-
     @Column(name = "BUSNUMBER")
     private String busNumber;
 
@@ -39,7 +36,10 @@ public class DeviceInfo {
     private BusType busType;
 
     @ManyToOne
-    @JoinColumn(name = "BUSNLINESEQ")
+    @JoinColumn(name = "BUSLINESEQ")
     private BusLine busLine;
+
+    @OneToOne(mappedBy = "deviceInfoSeq")
+    private Device deviceSeq;
 
 }

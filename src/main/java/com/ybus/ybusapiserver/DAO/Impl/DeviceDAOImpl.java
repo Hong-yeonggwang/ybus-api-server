@@ -28,7 +28,7 @@ public class DeviceDAOImpl implements DeviceDAO {
 
     @Override
     public void insertDeviceData(DeviceDTO deviceDTO){
-        Device device = deviceDTO.toEntity();
+        Device device = entityFactory.deviceToEntity(deviceDTO);
         deviceRepository.save(device);
         deviceRepository.flush();
     }

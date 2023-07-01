@@ -15,13 +15,5 @@ public class DeviceDTO {
     private String deviceHashKey;
     private String deviceName;
     private LocalDateTime updateTime;
-
-    public Device toEntity(){
-        Device device = Device.builder()
-                .deviceHashKey(this.deviceHashKey)
-                .deviceName(this.deviceName)
-                .updateTime(this.updateTime)
-                .build();
-        return device;
-    }
+    private Long deviceSeq;
 }

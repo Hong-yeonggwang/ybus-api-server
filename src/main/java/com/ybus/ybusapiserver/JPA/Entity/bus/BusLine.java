@@ -1,5 +1,6 @@
 package com.ybus.ybusapiserver.JPA.Entity.bus;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,11 +27,14 @@ public class BusLine {
     @Column(name = "BUSLINESTATE")
     private String busLineState;
 
+    @Column(name = "FEE")
+    private Integer fee;
+
     @ManyToOne
     @JoinColumn(name = "BUSTYPESEQ")
     private BusType busTypeSeq;
 
     @OneToMany(mappedBy = "busLineSeq")
-    private List<BusStop> busLines = new ArrayList<BusStop>();
+    private transient List<BusStop> busLines = new ArrayList<BusStop>();
 
 }

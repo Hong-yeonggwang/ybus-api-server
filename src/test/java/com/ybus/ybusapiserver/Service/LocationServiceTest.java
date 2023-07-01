@@ -14,10 +14,10 @@ public class LocationServiceTest {
     @Test
     public void insetLocationTest(){
         LocationInsertDTO dto = LocationInsertDTO.builder()
-                .device_sn("71299")
+                .device_sn("노랭 2호차")
                 .location_date(1683619300L)
-                .longitude(127.19005d)
-                .latitude(37.23611d)
+                .longitude(127.1912d)
+                .latitude(37.2357d)
                 .member_key("0b24ce3248df84d3b4a737cc7ccc58f82b9930e3")
                 .build();
         locationService.insertLocationData(dto);
